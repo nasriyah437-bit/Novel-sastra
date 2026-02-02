@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Andai Masalah Tidak Ada</title>
+
+<style>
+body{
+  margin:0;
+  background:linear-gradient(120deg,#0f0f0f,#1c1c1c);
+  font-family:Georgia,serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  overflow:hidden;
+}
+.book{
+  width:780px;
+  height:540px;
+  perspective:3000px;
+  position:relative;
+}
+.page{
+  width:100%;
+  height:100%;
+  background:#fdf6e3;
+  padding:45px;
+  box-sizing:border-box;
+  position:absolute;
+  transform-origin:left center;
+  transition:transform 1.2s cubic-bezier(.4,0,.2,1);
+  box-shadow:
+    inset -6px 0 18px rgba(0,0,0,.15),
+    0 25px 45px rgba(0,0,0,.45);
+  overflow-y:auto;
+  backface-visibility:hidden;
+}
+.page h1,.page h2{text-align:center;}
+.page p{
+  text-align:justify;
+  line-height:1.9;
+  font-size:16px;
+}
+.page-number{
+  position:absolute;
+  bottom:15px;
+  right:30px;
+  font-size:14px;
+  color:#666;
+}
+.controls{
+  position:absolute;
+  bottom:25px;
+  display:flex;
+  gap:20px;
+}
+button{
+  padding:12px 28px;
+  border:none;
+  border-radius:6px;
+  background:#222;
+  color:#fff;
+  font-size:15px;
+  cursor:pointer;
+}
+button:hover{background:#444;}
+</style>
+</head>
+
+<body>
+
+<div class="book">
+  <div class="page" id="page"></div>
+</div>
+
+<div class="controls">
+  <button onclick="prevPage()">◀ Prev</button>
+  <button onclick="nextPage()">Next ▶</button>
+</div>
+
+<script>
+const pages = [
+
+`<h1>Andai Masalah Tidak Ada</h1>
+<p style="text-align:center;"><em>Sebuah Novel Kehidupan</em></p>
+<p>
+Tidak ada manusia yang benar-benar siap menjalani hidup. Kita hanya
+melangkah dari hari ke hari sambil membawa pertanyaan yang sering
+kali tidak menemukan jawaban.
+</p>
+<p>
+Novel ini adalah kisah tentang bertahan, tentang ragu,
+dan tentang keberanian kecil yang sering luput disadari.
+</p>
+<p>
+Setiap halaman menyimpan perjalanan hati yang pelan,
+namun terus bergerak.
+</p>
+<div class="page-number">Halaman 1</div>`,
+
+`<h2>Bab 1 — Hari yang Tidak Pernah Benar-Benar Dimulai</h2>
+<p>
+Pagi itu datang seperti kebiasaan lama yang kehilangan makna. Matahari terbit dengan patuh, cahaya masuk ke kamar melalui celah tirai, namun tidak ada semangat yang ikut terbangun bersamanya. Aku membuka mata dengan perasaan berat, bukan karena kurang tidur, melainkan karena pikiran yang tak pernah benar-benar beristirahat. Seolah malam hanya memberi jeda singkat bagi kecemasan untuk menata ulang dirinya sebelum kembali menyerang saat sadar.
+
+Aku berbaring cukup lama, menatap langit-langit yang sama setiap hari, sambil bertanya mengapa bangun dari tidur terasa seperti kewajiban yang terlalu besar. Tidak ada peristiwa buruk yang baru saja terjadi, tidak ada kabar mengejutkan, namun dadaku tetap terasa sesak. Perasaan itu datang tanpa alasan jelas, dan justru karena itulah ia terasa semakin sulit dihadapi.
+a ak
+Ketika akhirnyu duduk di tepi ranjang, dunia terasa berjalan lebih cepat dariku. Jam berdetak tanpa menunggu kesiapan, suara dari luar rumah mulai terdengar, dan kehidupan tampak bergerak normal—seolah tidak peduli bahwa ada seseorang yang sedang berusaha keras hanya untuk terlihat baik-baik saja. Aku menarik napas panjang, berharap udara pagi bisa membawa sedikit ketenangan, tetapi yang datang justru rasa hampa yang dingin.
+
+Di saat seperti itu, pikiranku mulai berkelana ke arah yang selalu sama. Tentang hidup yang terasa terlalu rumit, tentang pilihan yang terasa salah, tentang kesalahan kecil yang berubah menjadi beban besar karena terlalu sering diingat. Aku membayangkan bagaimana rasanya hidup tanpa semua itu, tanpa pertanyaan, tanpa rasa takut, tanpa tekanan yang terus menempel seperti bayangan.
+
+Dan untuk pertama kalinya hari itu, kalimat itu muncul dengan jelas di kepalaku: andai masalah tidak ada. Bukan sebagai keluhan, melainkan sebagai harapan yang rapuh. Aku tahu itu mustahil, namun pikiran itu memberi jeda singkat—cukup untuk membuatku berdiri dan melangkah, meski tanpa keyakinan penuh.
+
+</p>
+<div class="page-number">Halaman 2</div>`,
+
+`<h2>Bab 2 — Langkah yang Terasa Asing</h2>
+<p>
+Keluar dari rumah seharusnya menjadi hal biasa, tetapi pagi itu setiap langkah terasa seperti keputusan besar. Kakiku bergerak, namun pikiranku tertinggal, sibuk memeriksa ulang rasa cemas yang tidak kunjung hilang. Jalanan di depanku sama seperti kemarin, namun entah mengapa terasa berbeda, seolah aku sedang berjalan di tempat yang asing meski telah berkali-kali kulewati.
+
+Orang-orang berlalu lalang dengan tujuan masing-masing. Ada yang berjalan cepat, ada yang berbicara sambil tertawa, ada pula yang terlihat lelah namun tetap melangkah. Aku memperhatikan mereka dengan rasa penasaran yang aneh, bertanya-tanya apakah mereka juga menyimpan kegelisahan yang sama, atau hanya aku yang terlalu banyak berpikir hingga lupa bagaimana caranya merasa sederhana.
+
+Setiap suara terasa lebih keras dari biasanya. Kendaraan yang lewat, percakapan orang asing, bahkan langkah kakiku sendiri terdengar seperti pengingat bahwa dunia tidak akan melambat hanya karena aku sedang kewalahan. Aku mencoba menyesuaikan diri, berjalan dengan ritme yang sama seperti orang lain, meski di dalam kepala, pikiranku masih berlarian tanpa arah.
+
+Di tengah perjalanan, ada dorongan kuat untuk berhenti. Untuk berbalik arah, kembali ke tempat aman, ke ruang kecil di mana aku tidak perlu menjelaskan apa pun kepada siapa pun. Namun aku tahu, kembali bukanlah solusi. Menghindar hanya akan menunda, dan penundaan sering kali membuat masalah tumbuh lebih besar dari sebelumnya.
+
+Maka aku terus melangkah. Tidak dengan keyakinan, tidak dengan keberanian besar, melainkan dengan keputusan sederhana untuk tidak menyerah hari itu. Langkahku mungkin ragu, tetapi ia tetap bergerak. Dan di saat itu, tanpa kusadari, aku telah memilih untuk tetap hidup di tengah ketidakpastian.
+</p>
+
+<div class="page-number">Halaman 3</div>`,
+
+`<h2>Bab 3 – Percakapan dengan Diri Sendiri</h2>
+<p>
+Malam datang membawa keheningan yang menipu. Di luar, dunia mulai tenang, tetapi di dalam kepalaku, suara-suara justru semakin keras. Aku duduk sendirian, ditemani lampu redup dan pikiran yang enggan diam. Inilah saat di mana aku tidak bisa lagi bersembunyi di balik kesibukan, karena yang tersisa hanyalah aku dan diriku sendiri.
+
+Aku mulai mengingat hal-hal yang seharusnya sudah kulupakan. Kata-kata yang pernah kuucapkan, keputusan yang pernah kuambil, dan momen-momen kecil yang terasa sepele saat itu, tetapi kini terasa menentukan. Aku bertanya pada diri sendiri apakah aku telah membuat pilihan yang tepat, atau hanya berjalan mengikuti arus tanpa benar-benar memahami ke mana aku ingin pergi.
+
+Percakapan itu tidak pernah benar-benar menemukan akhir. Setiap jawaban melahirkan pertanyaan baru, dan setiap penyesalan memunculkan penyesalan lain. Aku menyadari betapa kerasnya aku memperlakukan diriku sendiri, seolah kesalahan adalah sesuatu yang tidak boleh terjadi, padahal aku manusia yang belajar dengan cara jatuh dan bangkit.
+
+Ada saat di mana aku ingin berhenti berpikir, menekan tombol diam pada pikiranku sendiri. Namun semakin aku mencoba, semakin keras pikiranku melawan. Aku akhirnya menerima bahwa malam-malam seperti ini bukan untuk mencari solusi, melainkan untuk memahami bahwa kebingungan juga bagian dari proses.
+
+Ketika akhirnya aku berbaring dan memejamkan mata, percakapan itu belum selesai. Namun untuk pertama kalinya, aku tidak lagi memaksanya berhenti. Aku membiarkannya ada, berharap suatu hari nanti, dari kebisingan itu, akan muncul kejelasan yang selama ini kucari.
+
+Aku tidak berhenti.
+</p>
+<div class="page-number">Halaman 4</div>`,
+
+`<h2>Bab 4 — Luka yang Tidak Pernah Meminta Diperhatikan</h2>
+<p>
+
+Ada luka yang tidak pernah meminta untuk disembuhkan, hanya ingin diakui keberadaannya. Luka itu tidak berteriak, tidak berdarah, dan tidak meninggalkan bekas yang bisa ditunjuk dengan jari. Ia berdiam di tempat paling sunyi dalam diri, muncul di saat-saat tertentu, lalu menghilang tanpa penjelasan. Aku membawa luka itu ke mana pun pergi, seolah ia bagian dari identitasku yang tidak terpisahkan.
+
+Aku sering tersenyum di hadapan orang lain, berbicara seperlunya, tertawa pada waktu yang tepat, dan menjalani peran yang diharapkan. Tidak ada yang salah dengan semua itu, namun di baliknya, ada kelelahan yang sulit dijelaskan. Berpura-pura baik-baik saja membutuhkan energi yang tidak sedikit, dan semakin lama, aku mulai kehabisan tenaga untuk terus mempertahankannya.
+
+Luka itu muncul paling jelas ketika aku sendirian. Saat tidak ada suara lain yang menutupi, ia datang membawa ingatan dan perasaan yang sempat kupendam. Aku mencoba mengalihkan perhatian, mencari kesibukan, atau sekadar membiarkan waktu berlalu, tetapi luka itu selalu menemukan cara untuk mengingatkanku akan keberadaannya.
+
+Aku pernah berpikir bahwa mengabaikan luka adalah tanda kekuatan. Bahwa selama aku tidak mengakuinya, ia tidak akan berpengaruh apa-apa. Namun kenyataannya, luka yang diabaikan justru tumbuh diam-diam, menjadi beban yang semakin berat dari hari ke hari. Aku mulai menyadari bahwa keberanian bukan tentang menutupinya, melainkan tentang menghadapinya.
+
+Dan pada suatu malam yang hening, aku akhirnya mengakui luka itu—bukan kepada siapa pun, melainkan kepada diriku sendiri. Pengakuan itu tidak langsung menyembuhkan, tetapi memberiku ruang untuk bernapas. Untuk pertama kalinya, aku merasa sedikit lebih jujur pada diri sendiri.
+</p>
+<div class="page-number">Halaman 5</div>`,
+
+`<h2>Bab 5 — Hari yang Retak, Bukan Hancur</h2>
+<p>
+
+Hari itu berjalan seperti biasa, tetapi ada sesuatu yang terasa tidak utuh. Bukan kehancuran besar yang mengguncang, melainkan retakan-retakan kecil yang muncul tanpa disadari. Hal-hal sepele terasa lebih berat, dan kata-kata sederhana terdengar lebih tajam dari seharusnya. Aku menyadari bahwa perasaanku sedang rapuh, meski aku tidak tahu pasti alasannya.
+
+Aku menjalani aktivitas dengan gerakan otomatis, melakukan apa yang harus dilakukan tanpa benar-benar hadir sepenuhnya. Pikiranku melayang ke mana-mana, sementara tubuhku tetap bergerak mengikuti rutinitas. Ada jarak yang aneh antara apa yang kulakukan dan apa yang kurasakan, seolah aku hanya menjadi penonton dalam hidupku sendiri.
+
+Di tengah hari, sebuah kejadian kecil membuat retakan itu semakin terasa. Tidak ada konflik besar, tidak ada pertengkaran, hanya kesalahpahaman yang seharusnya bisa dilewati begitu saja. Namun bagiku, hal itu menjadi pengingat bahwa aku sedang tidak baik-baik saja, dan bahwa ada batas tipis antara bertahan dan runtuh.
+
+Aku ingin berhenti sejenak, mengambil napas, dan menata ulang perasaan. Namun waktu tidak memberi ruang untuk itu. Aku terus berjalan, menyelesaikan hari dengan sisa tenaga yang kupunya. Setiap jam berlalu dengan rasa lelah yang semakin menumpuk, bukan di tubuh, tetapi di pikiran.
+
+Saat hari itu akhirnya berakhir, aku menyadari satu hal penting. Hari itu tidak menghancurkanku. Ia hanya menunjukkan bahwa aku masih bertahan, meski dengan retakan. Dan mungkin, bertahan dengan retakan jauh lebih jujur daripada berpura-pura utuh.
+</p>
+<div class="page-number">Halaman 6</div>`,
+
+`<h2>Bab 6 — Menunggu Tanpa Kepastian</h2>
+<p>
+
+Menunggu adalah bentuk kelelahan yang sering diremehkan. Bukan karena lamanya waktu, melainkan karena ketidakpastian yang menyertainya. Aku menunggu banyak hal—jawaban, perubahan, kejelasan—tanpa tahu kapan atau apakah semuanya akan datang. Penantian itu menggantung, membuatku sulit melangkah ke depan atau kembali ke belakang.
+
+Setiap hari, aku bangun dengan harapan kecil yang samar. Harapan yang tidak berani tumbuh terlalu besar, karena takut kecewa. Aku belajar menahan ekspektasi, namun tetap saja ada bagian dari diriku yang berharap lebih. Harapan itu menjadi pedang bermata dua, memberi alasan untuk bertahan, sekaligus membuka peluang untuk terluka.
+
+Aku mencoba mengisi waktu dengan hal-hal lain, meyakinkan diri bahwa menunggu bukan berarti berhenti hidup. Namun di sela-sela kesibukan, pikiranku selalu kembali ke satu titik yang sama. Tentang apa yang sedang kutunggu, dan tentang bagaimana hidupku akan berubah jika penantian itu berakhir.
+
+Ada hari-hari di mana menunggu terasa ringan, dan ada hari-hari di mana ia terasa sangat melelahkan. Aku mulai bertanya apakah menunggu ini perlu, atau hanya caraku menunda keputusan yang sebenarnya harus kuambil. Pertanyaan itu berputar-putar, tanpa jawaban yang jelas.
+
+Pada akhirnya, aku menyadari bahwa menunggu tidak akan pernah memberiku kepastian. Kepastian hanya datang ketika aku berani bergerak, meski tanpa jaminan. Kesadaran itu tidak langsung mengubah apa pun, tetapi ia menanamkan benih keberanian yang pelan-pelan mulai tumbuh.
+</p>
+<div class="page-number">Halaman 7</div>`,
+
+`<h2>Bab 7 – Andai Masalah Tidak Ada</h2>
+<p>
+
+Kalimat itu kembali muncul, kali ini dengan makna yang berbeda. Andai masalah tidak ada bukan lagi sekadar keluhan, melainkan refleksi. Aku mulai menyadari betapa seringnya aku menjadikan masalah sebagai pusat dari segalanya, seolah hidup hanya terdiri dari hal-hal yang perlu diatasi dan diselesaikan.
+
+Aku membayangkan hidup tanpa masalah, tanpa konflik, tanpa rasa takut. Hidup yang tenang, lurus, dan mudah. Namun semakin kupikirkan, semakin terasa bahwa hidup seperti itu mungkin akan kehilangan maknanya. Tanpa masalah, aku tidak akan belajar bertahan, tidak akan mengenal batasanku sendiri, dan mungkin tidak akan mengenal diriku yang sekarang.
+
+Masalah memang melelahkan, tetapi ia juga menjadi guru yang keras namun jujur. Ia memaksaku untuk berhenti, berpikir, dan mengevaluasi arah hidupku. Tanpanya, aku mungkin akan berjalan tanpa sadar, tanpa benar-benar memahami apa yang kuinginkan atau butuhkan.
+
+Aku mulai melihat masalah sebagai bagian dari perjalanan, bukan sebagai musuh yang harus dihilangkan. Pandangan itu tidak membuat masalah menghilang, tetapi mengubah caraku menghadapinya. Aku tidak lagi bertanya mengapa masalah itu ada, melainkan apa yang bisa kupelajari darinya.
+
+Dan di saat itu, untuk pertama kalinya, aku merasa sedikit lebih damai. Bukan karena masalah berkurang, tetapi karena aku berhenti melawannya dengan kemarahan. Aku membiarkannya ada, sambil terus melangkah, membawa pemahaman baru yang perlahan menguatkan.
+</p>
+<div class="page-number">Halaman 8</div>`,
+
+`<h2>Bab 8 – Menerima Kenyataan</h2>
+<p>
+
+Menerima kenyataan ternyata tidak sesederhana mengucapkannya. Ada bagian dari diriku yang menolak percaya bahwa tidak semua usaha akan berakhir sesuai harapan. Aku pernah berharap hidup akan berubah hanya karena aku sudah berusaha sebaik mungkin, seolah dunia punya kewajiban untuk membalas semua lelahku. Ketika kenyataan tidak sejalan dengan harapan itu, rasa kecewa tumbuh pelan tapi pasti, mengisi ruang di dadaku dengan sesak yang sulit dijelaskan.
+
+Aku sempat menyalahkan banyak hal—keadaan, waktu, bahkan diriku sendiri. Namun semakin lama aku terjebak dalam penolakan, semakin jauh aku melangkah dari ketenangan. Hingga akhirnya aku mengerti, menerima bukan berarti berhenti berharap, melainkan berhenti memaksa. Kenyataan tidak selalu ramah, tapi ia jujur, dan dari kejujuran itulah aku belajar untuk berdiri tanpa ilusi.
+</p>
+<div class="page-number">Halaman 9</div>`,
+
+`<h2>Bab 9 – Belajar Melepaskan
+</h2>
+<p>
+
+Ada hal-hal yang aku genggam terlalu lama, bukan karena masih membutuhkannya, tetapi karena takut akan kekosongan yang tersisa jika aku melepaskannya. Kenangan, harapan, dan rasa bersalah bercampur menjadi satu, membebani langkahku setiap kali aku mencoba maju. Aku pikir dengan mempertahankan semuanya, aku akan merasa lebih aman, padahal yang terjadi justru sebaliknya.
+
+Melepaskan ternyata bukan tindakan sekali jadi. Ia proses panjang yang penuh keraguan. Ada hari-hari di mana aku merasa kuat, lalu ada hari lain di mana aku ingin kembali menggenggam masa lalu. Namun sedikit demi sedikit, aku belajar bahwa kehilangan tidak selalu berarti kegagalan. Kadang, kehilangan adalah cara hidup mengajarkan kita untuk memberi ruang bagi hal-hal baru yang lebih jujur.
+</p>
+<div class="page-number">Halaman 10</div>`,
+
+`<h2>Bab 10 – Langkah Kecil ke Depan</h2>
+<p>
+
+Aku tidak bangun suatu pagi dengan perasaan utuh dan penuh keyakinan. Yang ada hanyalah kesadaran sederhana bahwa aku tidak bisa terus diam di tempat yang sama. Maka aku mulai melangkah, tanpa target besar, tanpa janji manis pada diri sendiri. Langkah itu kecil, sering ragu, tapi nyata. Dan untuk pertama kalinya, aku tidak memarahi diriku karena berjalan terlalu lambat.
+
+Dalam setiap langkah kecil itu, aku menemukan arti baru tentang bertahan. Hidup bukan tentang menjadi sempurna atau bebas masalah, melainkan tentang terus bergerak meski takut masih ada. Di titik itu aku tersenyum tipis, bukan karena semua masalah hilang, tetapi karena aku tahu—aku masih berjalan. Dan mungkin, itu sudah lebih dari cukup.
+</p>
+<div class="page-number">Halaman 11</div>`,
+
+`<h2>Bab 11 – Menata Ulang Harapan</h2>
+<p>
+
+Setelah semua yang kulewati, aku mulai menyadari bahwa harapan tidak seharusnya menjadi beban. Selama ini aku sering menaruh harapan terlalu tinggi, lalu menyalahkan diriku sendiri ketika kenyataan tidak mampu mencapainya. Aku mengira berharap adalah tanda optimisme, padahal tanpa disadari, aku sedang menyiapkan diriku untuk kecewa. Dari sana aku belajar menata ulang harapan, bukan dengan menghilangkannya, tetapi dengan membuatnya lebih manusiawi.
+
+Aku mulai berharap dengan lebih sederhana. Bukan lagi tentang hidup yang sempurna, melainkan hari yang cukup tenang. Bukan tentang bebas dari masalah, melainkan cukup kuat untuk menghadapinya. Harapan kecil itu terasa lebih jujur, dan untuk pertama kalinya, aku tidak merasa kalah ketika hidup tidak berjalan sesuai rencana.
+</p>
+<div class="page-number">Halaman 12</div>`,
+
+`<h2>Bab 12 – Sunyi yang Mengajar</h2>
+<p>
+
+Sunyi sering dianggap menakutkan, padahal di dalamnyalah aku paling banyak belajar. Saat tidak ada suara lain yang menutupi pikiranku, aku dipaksa mendengar isi hatiku sendiri. Awalnya sunyi itu terasa menekan, seperti ruang sempit yang membuatku sulit bernapas. Namun semakin lama, aku mulai memahami bahwa sunyi tidak datang untuk menyakiti, melainkan untuk mengingatkan.
+
+Dalam sunyi, aku mengenali rasa takut yang selama ini kusembunyikan, juga keinginan-keinginan kecil yang sering kuabaikan. Aku belajar bahwa kesendirian bukan selalu kesepian. Kadang, ia adalah jeda yang dibutuhkan agar seseorang bisa kembali mengenali dirinya.
+</p>
+<div class="page-number">Halaman 13</div>`,
+
+`<h2>Bab 13 – Tentang Rasa Gagal</h2>
+<p>
+
+Gagal pernah menjadi kata yang paling kuhindari. Aku menganggapnya sebagai akhir dari segalanya, sebagai bukti bahwa aku tidak cukup baik. Setiap kegagalan terasa seperti cap yang melekat di diri, membuatku ragu untuk mencoba lagi. Aku lupa bahwa kegagalan tidak pernah datang sendirian; ia selalu membawa pelajaran, meski sering kali tersembunyi di balik rasa sakit.
+
+Perlahan aku belajar mengubah caraku memandang gagal. Ia bukan akhir, melainkan penanda bahwa aku pernah berani mencoba. Dari sana, rasa malu berubah menjadi pemahaman, dan rasa takut berganti menjadi kehati-hatian yang sehat.
+</p>
+<div class="page-number">Halaman 14</div>`,
+
+`<h2>Bab 14 – Membiarkan Diri Lelah</h2>
+<p>
+
+Ada masa di mana aku memaksa diri untuk terus kuat, seolah lelah adalah tanda kelemahan. Aku menutup mata terhadap batas kemampuanku sendiri, hingga suatu hari tubuh dan pikiranku menolak bekerja sama. Dari kelelahan itulah aku belajar satu hal penting: berhenti sejenak bukan berarti menyerah.
+
+Aku mulai mengizinkan diriku untuk beristirahat tanpa rasa bersalah. Aku memahami bahwa manusia bukan mesin, dan kelelahan adalah bagian dari proses. Dengan berhenti sejenak, aku justru menemukan tenaga baru untuk melanjutkan perjalanan.
+</p>
+<div class="page-number">Halaman 15</div>`,
+
+`<h2>Bab 15 – Menerima Diri Sendiri</h2>
+<p>
+
+Menerima diri sendiri ternyata jauh lebih sulit daripada menerima orang lain. Aku sering memaafkan kesalahan orang lain, namun begitu keras pada diriku sendiri. Setiap kekurangan terasa seperti kesalahan besar yang tidak boleh terjadi. Hingga akhirnya aku menyadari bahwa aku juga berhak diperlakukan dengan lembut, oleh siapa pun—termasuk oleh diriku sendiri.
+
+Aku belajar menerima diriku apa adanya, dengan segala kekurangan dan ketidaksempurnaan. Bukan berarti berhenti berkembang, tetapi berhenti membenci diri sendiri selama proses itu berlangsung.
+</p>
+<div class="page-number">Halaman 16</div>`,
+
+`<h2>Bab 16 – Hubungan yang Berubah</h2>
+<p>
+Seiring aku berubah, hubunganku dengan orang-orang di sekitarku pun ikut berubah. Ada yang menjauh, ada yang tetap tinggal, dan ada pula yang baru hadir. Awalnya perubahan itu terasa menyakitkan, seolah aku kehilangan bagian penting dari hidupku. Namun perlahan aku mengerti, tidak semua orang ditakdirkan berjalan bersama kita selamanya.
+Aku belajar menghargai setiap pertemuan dan perpisahan. Semua memiliki perannya masing-masing, mengajarkan sesuatu sebelum akhirnya berlalu. Dari sana aku berhenti memaksa siapa pun untuk tetap tinggal.
+</p>
+<div class="page-number">Halaman 17</div>`,
+
+`<h2>Bab 17 – Berdamai dengan Masa Lalu</h2>
+<p>
+Masa lalu sering datang tanpa diundang, membawa kenangan yang belum sepenuhnya sembuh. Aku pernah mencoba melupakannya, menguburnya dalam-dalam, berharap ia tidak muncul lagi. Namun semakin aku melawan, semakin kuat ia bertahan. Hingga akhirnya aku memilih cara lain: berdamai.
+Berdamai bukan berarti melupakan apa yang pernah terjadi, tetapi menerima bahwa itu adalah bagian dari perjalanan hidupku. Masa lalu membentukku, namun ia tidak harus menentukan siapa aku hari ini.
+</p>
+<div class="page-number">Halaman 18</div>`,
+
+`<h2>Bab 18 – Menemukan Makna</h2>
+<p>
+Di tengah perjalanan panjang ini, aku mulai bertanya tentang makna hidup. Bukan dalam arti besar dan filosofis, melainkan makna sederhana yang bisa kurasakan setiap hari. Aku menemukan makna dalam hal-hal kecil: percakapan singkat, tawa sederhana, dan ketenangan setelah badai.
+Makna itu tidak datang sekaligus, melainkan terkumpul perlahan, seiring aku belajar menghargai hidup apa adanya. Dari sana aku mengerti, hidup tidak harus luar biasa untuk terasa berarti.
+</p>
+<div class="page-number">Halaman 19</div>`,
+
+`<h2>Bab 19 – Kesimpulan</h2>
+<p>
+Setelah semua langkah, luka, dan pembelajaran, aku menarik satu kesimpulan sederhana: masalah bukanlah akhir dari kebahagiaan. Justru dari masalah itulah aku belajar mengenal diriku sendiri. Aku belajar bertahan, menerima, melepaskan, dan melangkah kembali meski ragu.
+Andai masalah tidak ada, mungkin hidup akan terasa ringan, tetapi juga hampa. Masalah memberi warna, memberi arah, dan memberi pelajaran yang tidak akan datang dengan cara lain.
+</p>
+<div class="page-number">Halaman 20</div>`,
+
+`<h2>Bab 20 – Motivasi</h2>
+<p>
+Hidup tidak menuntut kita untuk selalu kuat, hanya untuk terus mencoba. Tidak apa-apa jika hari ini terasa berat, tidak apa-apa jika langkahmu lebih lambat dari orang lain. Selama kamu masih mau berjalan, sekecil apa pun langkah itu, kamu belum kalah.
+Percayalah, kamu lebih kuat dari yang kamu kira. Masalah boleh datang dan pergi, tapi dirimu tetap berharga. Teruslah melangkah, karena hidupmu layak diperjuangkan.
+</p>
+
+<div class="page-number">Halaman 21</div>`,
+
+`<h2>Kesimpulan</h2>
+<p>
+Perjalanan ini mengajarkanku bahwa masalah bukan musuh,
+melainkan bagian dari proses menjadi dewasa.
+</p>
+<p>
+Setiap luka, ragu, dan takut memiliki perannya masing-masing.
+</p>
+<p>
+Hidup bukan tentang menghindari masalah,
+tetapi tentang menghadapi dan belajar darinya.
+</p>
+<div class="page-number">Halaman 22</div>`,
+
+`<h2>Motivasi</h2>
+<p>
+Jika hari ini terasa berat, ingatlah bahwa kamu tidak sendirian.
+Semua orang sedang berjuang, meski tidak semua luka terlihat.
+</p>
+<p>
+Tidak apa-apa berjalan pelan. Tidak apa-apa merasa lelah.
+Yang terpenting adalah kamu tidak berhenti.
+</p>
+<p style="text-align:center;"><strong>
+Kamu lebih kuat dari yang kamu kira.
+</strong></p>
+<div class="page-number">Halaman 23</div>`
+];
+
+let current=0;
+const page=document.getElementById("page");
+let animating=false;
+
+function renderPage(dir="next"){
+  if(animating) return;
+  animating=true;
+  page.style.transform=dir==="next"?"rotateY(-180deg)":"rotateY(180deg)";
+  setTimeout(()=>{
+    page.innerHTML=pages[current];
+    page.style.transform="rotateY(0deg)";
+  },600);
+  setTimeout(()=>animating=false,1200);
+}
+function nextPage(){
+  if(current<pages.length-1){current++;renderPage("next");}
+}
+function prevPage(){
+  if(current>0){current--;renderPage("prev");}
+}
+renderPage();
+</script>
+
+</body>
+</html>
